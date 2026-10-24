@@ -1,4 +1,4 @@
-# osu_patterncopier v1.0
+# osu_patterncopier v1.0.1
 
 osu!stable 编辑器跨谱面对象复制工具。
 
@@ -14,9 +14,25 @@ osu!stable 编辑器跨谱面对象复制工具。
 - 写入前创建 `.slidercopier.bak` 备份；
 - 不注入键盘、不写 osu! 进程内存、不需要管理员权限。
 
+## 安装与运行
+
+### 普通用户（推荐）
+
+1. 打开本项目 GitHub 页面的 [Releases](https://github.com/Ribet-Code/osu_patterncopier/releases)。
+2. 下载最新版本中的 `osu_patterncopier-v1.0.1-win-x64.zip`（或页面显示的最新文件名）。
+3. 将 ZIP 文件解压到一个固定目录，例如 `C:\Tools\osu_patterncopier`。
+4. 双击解压目录中的 `osu_patterncopier.exe` 启动程序。程序会缩小到 Windows 托盘，不需要安装器，也不需要管理员权限。
+5. 如果 Windows Defender SmartScreen 显示提示，请先确认文件来自本项目的 GitHub Release，再选择“更多信息”→“仍要运行”。
+
+发布包是 Windows x64 自包含版本，已包含 .NET 运行时和 `EditorReader.dll`，不需要另行安装 .NET。请保持压缩包内的所有文件在同一个目录中，不要只单独复制 `.exe`。
+
+### 卸载
+
+退出托盘程序后，直接删除解压目录即可。工具写入谱面时产生的 `.osu.slidercopier.bak` 备份文件不会自动删除。
+
 ## 操作说明
 
-1. 运行 `publish\osu_patterncopier.exe`。
+1. 运行解压目录中的 `osu_patterncopier.exe`。
 2. 在 osu!stable 源谱面中选中一个滑条，或框选一整组对象，按 `Ctrl+C`。
 3. 切换到目标谱面，把时间线定位到对象组的起始位置。
 4. 在 osu! 编辑器内手动按 `Ctrl+S` 保存目标谱面。
@@ -66,10 +82,10 @@ osu!stable 编辑器跨谱面对象复制工具。
 ```powershell
 dotnet restore .\osu_patterncopier.csproj
 dotnet build .\osu_patterncopier.csproj -c Release
-dotnet publish .\osu_patterncopier.csproj -c Release -r win-x64 --self-contained false -o .\publish
+dotnet publish .\osu_patterncopier.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=false -o .\publish
 ```
 
-发布目录中的 `osu_patterncopier.exe` 可直接运行。运行时需要同目录的 `EditorReader.dll`。
+发布目录中的 `osu_patterncopier.exe` 可直接运行。发布时请将整个 `publish` 目录打包，不要只上传 `.exe`。
 
 ## 第三方组件与开源许可
 
