@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>OsuPatternCopier</RootNamespace>
+    <AssemblyName>osu_patterncopier</AssemblyName>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>v1.0</InformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="external\**" />
+    <None Remove="external\**" />
+    <Reference Include="EditorReader">
+      <HintPath>external\EditorReader\EditorReader.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
